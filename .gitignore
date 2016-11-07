@@ -1,0 +1,7 @@
+dist/
+pycache/
+.cache/
+.tox/
+*.egg-info/
+*.pyc
+*.swp
