@@ -1,3 +1,6 @@
+"""
+Test diapason notes.
+"""
 import pytest
 from pytest import approx
 
