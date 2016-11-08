@@ -13,9 +13,10 @@ with open(pjoin('diapason', '__init__.py')) as f:
 setup(
     name='diapason',
     version=version,
-    description='TODO',
-    long_description='''TODO.''',
-    url='https://github.com/Peque/diapason',
+    description='Python module to deal with note sounds.',
+    long_description='''The diapason Python module can be used to deal with
+        note sounds: WAV generation, note frequency calculation...''',
+    url='https://github.com/Soundphy/diapason',
     author='Miguel Sánchez de León Peque',
     author_email='peque@neosit.es',
     license='TODO',
@@ -31,7 +32,7 @@ setup(
     ],
     keywords='diapason',
     packages=['diapason'],
-    install_requires=[],
+    install_requires=['numpy', 'scipy'],
     extras_require={
         'dev': [],
         'test': ['tox'],
