@@ -1,9 +1,12 @@
+|Logo|
+
 |Build Status| |Latest Version| |Documentation Status|
 |Code Climate| |Code Coverage - codecov| |Code Coverage - coveralls|
 
 The diapason Python module can be used to generate note sounds.
 
 
+.. |Logo| image:: docs/source/logo/logo.png
 .. |Build Status| image:: https://api.travis-ci.org/Soundphy/diapason.svg?branch=master
    :target: https://travis-ci.org/Soundphy/diapason
 .. |Latest Version| image:: https://img.shields.io/pypi/v/diapason.svg
