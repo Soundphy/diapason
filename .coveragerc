@@ -1,0 +1,16 @@
+[run]
+branch = True
+source = diapason
+
+[report]
+show_missing = True
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    def __hash__
+    if .debug:
+    raise NotImplementedError
+    if __name__ == .__main__.:
+omit =
+    setup.py
+    diapason/tests/*
