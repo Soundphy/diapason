@@ -14,3 +14,4 @@ exclude_lines =
 omit =
     setup.py
     diapason/tests/*
+    diapason/dub.py
