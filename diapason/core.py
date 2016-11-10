@@ -7,7 +7,7 @@ from numpy import linspace, sin, pi, int16
 from scipy.io import wavfile
 
 
-def note_frequency(note, sharp=0, flat=0, octave=4):
+def note_frequency(note, sharp=0, flat=0, octave=4, scientific=False):
     """
     Returns the frequency (in hertzs) associated to a given note.
 
@@ -26,6 +26,8 @@ def note_frequency(note, sharp=0, flat=0, octave=4):
         Return a frequency higher in pitch by `sharp` semitones.
     flat : int
         Return a frequency lower in pitch by `flat` semitones.
+    scientific : bool
+        Use scientific pitch instead: C4 is set to 256 Hz.
 
     Returns
     -------
@@ -38,10 +40,21 @@ def note_frequency(note, sharp=0, flat=0, octave=4):
         raise ValueError('Cannot set both sharp and flat parameters!')
 
     position = dict(C=0, D=2, E=4, F=5, G=7, A=9, B=11)
-    note_number = octave * 12 + position[note] + 1
-    note_number += sharp
-    note_number -= flat
-    frequency = 2 ** ((note_number - 58) / 12.) * 440.
+    if scientific:
+        # C4 at 256 Hz
+        base_note = 'C'
+        base_octave = 4
+        base_frequency = 256.
+    else:
+        # A4 at 440 Hz
+        base_note = 'A'
+        base_octave = 4
+        base_frequency = 440.
+    note_position = position[note] - position[base_note] + \
+        (octave - base_octave) * 12
+    note_position += sharp
+    note_position -= flat
+    frequency = 2 ** (note_position / 12.) * base_frequency
 
     return frequency
 

@@ -62,9 +62,27 @@ def test_note_frequency(note, sharp, flat, octave, frequency):
     """
     Basic note_frequency() function tests.
     """
-    expected = approx(frequency, rel=1e-3)
     actual = note_frequency(note, sharp=sharp, flat=flat, octave=octave)
-    assert expected == actual
+    assert actual == approx(frequency, rel=1e-5)
+
+
+@pytest.mark.parametrize(('note', 'sharp', 'flat', 'octave', 'frequency'), [
+    # Exact frequencies (C)
+    ('C', 0, 0, 0, 16.),
+    ('C', 0, 0, 2, 64.),
+    ('C', 0, 0, 4, 256.),
+    ('C', 0, 0, 6, 1024.),
+    ('C', 0, 0, 8, 4096.),
+    # Other frequencies
+    ('A', 0, 0, 4, 430.539),
+])
+def test_note_frequency_scientific(note, sharp, flat, octave, frequency):
+    """
+    Test note frequency calculation with scientific pitch.
+    """
+    actual = note_frequency(note, sharp=sharp, flat=flat, octave=octave,
+                            scientific=True)
+    assert actual == approx(frequency, rel=1e-5)
 
 
 @pytest.mark.parametrize(('note', 'sharp', 'flat', 'octave'), [
