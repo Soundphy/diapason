@@ -52,13 +52,19 @@ from diapason import note_frequency
     ('G', 0, 2, 4, 349.228),
     ('A', 0, 2, 4, 391.995),
     ('B', 0, 2, 4, 440.000),
+    # Changing octave
+    ('C', 0, 0, 5, 523.251),
+    ('E', 1, 0, 7, 2793.83),
+    ('C', 0, 0, 3, 130.813),
+    ('E', 1, 0, 1, 43.6535),
 ])
 def test_note_frequency(note, sharp, flat, octave, frequency):
     """
     Basic note_frequency() function tests.
     """
     expected = approx(frequency, rel=1e-3)
-    assert expected == note_frequency(note, sharp, flat, octave)
+    actual = note_frequency(note, sharp=sharp, flat=flat, octave=octave)
+    assert expected == actual
 
 
 @pytest.mark.parametrize(('note', 'sharp', 'flat', 'octave'), [

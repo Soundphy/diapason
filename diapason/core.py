@@ -11,6 +11,10 @@ def note_frequency(note, sharp=0, flat=0, octave=4):
     """
     Returns the frequency (in hertzs) associated to a given note.
 
+    All the frequencies are based on the standard concert pitch or standard
+    piano key frequencies, meaning that A4 (using scientific picth notation)
+    is at 440 hertzs.
+
     Parameters
     ----------
     note : string
