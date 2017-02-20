@@ -34,5 +34,5 @@ def test_generate_wav(frequency, duration, rate):
     assert scipyrate == rate
     assert len(data) / rate == approx(duration)
     transformed = fft(data)
-    absolute = abs(transformed[:len(transformed) / 2 - 1])
+    absolute = abs(transformed[:len(transformed) // 2 - 1])
     assert numpy.argmax(absolute) / duration == approx(frequency)
