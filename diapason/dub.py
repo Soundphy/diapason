@@ -11,9 +11,11 @@ def convert_wav(wav, coding_format='mpeg', **kwargs):
     """
     Convert a WAV file to other formats.
     """
-    assert coding_format in ('mpeg',)
+    assert coding_format in ('mpeg', 'vorbis')
     if coding_format == 'mpeg':
         coding_format = 'mp3'
+    if coding_format == 'vorbis':
+        coding_format = 'ogg'
     bitrate = kwargs.get('bitrate', None)
     converted = BytesIO()
     audio = AudioSegment.from_wav(wav)
